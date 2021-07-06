@@ -1,0 +1,15 @@
+node_modules/
+src/
+yarn-error.log
+rollup.config.js
+tsconfig.json
+tsconfig.build.json
+tsconfig.rollup.json
+.DS_Store
+.idea
+jest.config.js
+.stylelintrc
+.gitignore
+.editorconfig
+.eslintrc
+yarn.lock
