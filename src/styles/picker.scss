@@ -1,0 +1,35 @@
+.form-picker-control {
+  width: 100%;
+
+  > .picker {
+    height: 96px;
+    min-width: 100%;
+
+    .inner-picker {
+      display: inline-flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+
+      .label {
+        min-width: 0;
+        font-size: 26px;
+        color: #333;
+        line-height: 96px;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+
+        &.empty {
+          color: #999;
+        }
+      }
+
+      .icon {
+        flex-shrink: 0;
+        margin-left: 12px;
+        color: #999;
+      }
+    }
+  }
+}

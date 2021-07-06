@@ -1,0 +1,28 @@
+.form-input-control {
+  display: flex;
+  width: 100%;
+
+  > input {
+    flex: 1;
+    min-width: 0;
+    height: 96px;
+    color: #333;
+  }
+
+  > .input-clear-action {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    height: 96px;
+    padding-left: 16px;
+
+    > .icon {
+      color: #999;
+    }
+  }
+}
+
+.form-input-control-placeholder {
+  color: #999;
+}

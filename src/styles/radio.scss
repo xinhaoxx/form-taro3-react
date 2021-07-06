@@ -1,0 +1,26 @@
+.form-radio-group {
+  width: 100%;
+
+  .form-radio-group-control {
+    display: flex;
+    align-items: center;
+    height: 96px;
+
+    radio {
+      display: flex;
+      align-items: center;
+      color: #333;
+
+      .wx-radio-input {
+        height: 26px;
+        width: 26px;
+      }
+
+      & + radio {
+        margin-left: 30px;
+      }
+    }
+  }
+}
+
+

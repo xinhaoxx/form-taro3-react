@@ -1,0 +1,18 @@
+.form-textarea-control {
+  padding: 16px 0;
+  width: 100%;
+
+  > Textarea {
+    box-sizing: border-box;
+    padding: 18px;
+    width: 100%;
+    color: #333;
+    background-color: #fafafa;
+    border-radius: 6px;
+    height: 160px;
+  }
+}
+
+.form-textarea-control-placeholder {
+  color: #999;
+}
