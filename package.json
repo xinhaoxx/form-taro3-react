@@ -5,7 +5,7 @@
   "module": "dist/index.esm.js",
   "main": "dist/index.js",
   "source": "src/index.ts",
-  "description": "基于 Taro 3.x 封装的表单组件",
+  "description": "基于 Taro 3.x React 封装的表单组件",
   "types": "types/index.d.ts",
   "files": [
     "lib",
@@ -33,6 +33,10 @@
   ],
   "author": "xinhaoxx<xuxinhao8260@gmail.com>",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:xinhaoxx/form-taro3-react.git"
+  },
   "dependencies": {
     "async-validator": "^3.5.2"
   },
