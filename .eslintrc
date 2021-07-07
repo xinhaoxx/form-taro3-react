@@ -1,15 +1,96 @@
+// Eslint 规则
+// 配置参考地址：http://eslint.cn/docs/rules/
 {
-  "extends": ["taro"],
+  "extends": [
+    "taro/react"
+  ],
   "rules": {
-    "no-unused-vars": ["error", { "varsIgnorePattern": "Taro" }],
-    "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx", ".tsx"] }]
-  },
-    "parser": "@typescript-eslint/parser",
-  "parserOptions": {
-    "ecmaFeatures": {
-      "jsx": true
-    },
-    "useJSXTextNode": true,
-    "project": "./tsconfig.json"
+    // 字符串必须使用单引号包括
+    "quotes": [
+      "error",
+      "single"
+    ],
+    // 语句必须以分号结尾
+    "semi": [
+      "error",
+      "always"
+    ],
+    // 不允许尾随逗号
+    "comma-dangle": [
+      "error",
+      "never"
+    ],
+    // 逗号前方不允许空格，逗号后后方必须空格
+    "comma-spacing": "error",
+    // 关键字前后必须增加空格
+    "keyword-spacing": "error",
+    // 箭头函数 => 前后必须增加空格
+    "arrow-spacing": "error",
+    // 箭头函数标识前后禁止换行
+    "implicit-arrow-linebreak": "error",
+    // 键名冒号后方必须以空格分隔
+    "key-spacing": "error",
+    // 数组首位前方和末位后方不能出现空格
+    "array-bracket-spacing": "error",
+    // 对象首位前方和末位后方不能出现空格
+    "object-curly-spacing": "error",
+    // 必须使用安全类型相等判断
+    "eqeqeq": "error",
+    // 使用驼峰变量名
+    "camelcase": "error",
+    // 禁止在函数标识符和其调用之间有空格
+    "func-call-spacing": "error",
+    // 缩进为两个空格
+    "indent": [
+      "error",
+      2,
+      {
+        "SwitchCase": 1
+      }
+    ],
+    // 花括号内使用一致的换行符
+    "object-curly-newline": "error",
+    // 禁止块内填充
+    "padded-blocks": [
+      "error",
+      "never"
+    ],
+    // 要求语句块之前的空格
+    "space-before-blocks": "error",
+    // 禁止圆括号内的空格
+    "space-in-parens": "error",
+    // 要求中缀操作符周围有空格
+    "space-infix-ops": "error",
+    // 禁止在一元操作符之前或之后存在空格
+    "space-unary-ops": "error",
+    // 强制在注释中 // 或 /* 使用一致的空格
+    "spaced-comment": "error",
+    // 强制在 switch 的冒号左右有空格
+    "switch-colon-spacing": "error",
+    // 不允许改变用const声明的变量
+    "no-const-assign": "error",
+    // 禁用此规则解决误报变量阴影
+    "no-shadow": "off",
+    // 要求使用 let 或 const 而不是 var
+    "no-var": "error",
+    // 要求对象字面量简写语法
+    "object-shorthand": "error",
+    // 要求使用箭头函数作为回调
+    "prefer-arrow-callback": "error",
+    // 建议使用const
+    "prefer-const": "error",
+    // 建议使用剩余参数代替 arguments 如：...arg
+    "prefer-rest-params": "error",
+    // 强制剩余和扩展运算符及其表达式之间没有空格
+    "rest-spread-spacing": "error",
+    // 强制模板字符串中变量不能有空格
+    "template-curly-spacing": "error",
+    // 允许可选链操作符调用方法
+    "@typescript-eslint/no-unused-expressions": "off",
+    "@typescript-eslint/no-loop-func": "off",
+    "@typescript-eslint/no-redeclare": "off",
+    "@typescript-eslint/no-shadow": "off",
+    "@typescript-eslint/no-use-before-define": "off"
   }
 }
+
