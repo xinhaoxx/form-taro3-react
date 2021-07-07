@@ -4,7 +4,6 @@ import {Input, View} from '@tarojs/components';
 import {FormFieldProps} from '../../interface';
 import FormControl from '../control';
 import {isControlRequired} from '../../util';
-// import {AtIcon} from 'taro-ui';
 
 // 文本输入框 参数
 interface FromTextInputProps extends FormFieldProps<InputProps> {
@@ -99,7 +98,7 @@ export class FormTextInput extends Component<FromTextInputProps, State> {
                 }
               }}
             >
-              {/* <AtIcon prefixClass='icon' value='close-circle-fill' size='16' /> */}
+              <View className='clear-icon' />
             </View>
           }
           {this.props.suffix || null}

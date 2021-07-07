@@ -17,8 +17,31 @@
     height: 96px;
     padding-left: 16px;
 
-    > .icon {
-      color: #999;
+    .clear-icon {
+      position: relative;
+      height: 30px;
+      width: 30px;
+      border-radius: 50%;
+      background-color: #ddd;
+
+      &:before, &:after {
+        display: inline-block;
+        content: '';
+        position: absolute;
+        top: 25%;
+        left: calc(50% - 2px);
+        height: 50%;
+        width: 4px;
+        background-color: #fff;
+      }
+
+      &:before {
+        transform: rotate(-45deg);
+      }
+
+      &:after {
+        transform: rotate(45deg);
+      }
     }
   }
 }

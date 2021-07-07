@@ -25,10 +25,19 @@
         }
       }
 
-      .icon {
-        flex-shrink: 0;
-        margin-left: 12px;
-        color: #999;
+      .picker-dropdown {
+        display: inline-flex;
+        justify-content: center;
+        width: 30px;
+
+        .dropdown-icon {
+          box-sizing: border-box;
+          height: 16px;
+          width: 16px;
+          border-bottom: 4px solid #ddd;
+          border-right: 4px solid #ddd;
+          transform: rotate(45deg);
+        }
       }
     }
   }

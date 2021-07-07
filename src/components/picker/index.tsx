@@ -9,7 +9,6 @@ import {Picker, Text, View} from '@tarojs/components';
 import {FormFieldProps} from '../../interface';
 import {isArrayEqual, isControlRequired} from '../../util';
 import FormControl from '../control';
-// import {AtIcon} from 'taro-ui';
 
 // Picker 参数定义
 export interface FormPickerProps extends FormFieldProps<PickerMultiSelectorProps | PickerTimeProps | PickerDateProps | PickerRegionProps | PickerSelectorProps> {
@@ -94,7 +93,7 @@ export class FormPicker extends Component<FormPickerProps, { value: number | num
               <Text className={`label ${!label ? 'empty' : ''}`}>
                 {label || this.props?.placeholder || (this.props.fieldProps?.disabled ? '无' : '请选择')}
               </Text>
-              {/* {this.props.fieldProps?.disabled ? null : <AtIcon prefixClass='icon' value='down' size='16' />} */}
+              {this.props.fieldProps?.disabled ? null : <View className='picker-dropdown'><View className='dropdown-icon' /></View>}
             </View>
           </Picker>
         </View>
