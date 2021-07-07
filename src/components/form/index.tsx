@@ -43,6 +43,11 @@ export interface CustomizeFormExpose {
    */
   validate: () => Promise<void>;
   /**
+   * 重置表单
+   * @param form - 新表单值
+   */
+  reset: (form?: Record<string, any>) => void;
+  /**
    * 设置表单值
    * @param value - 值
    * @example
@@ -180,6 +185,11 @@ export const CustomizeForm = forwardRef<CustomizeFormExpose, CustomizeFormProps>
           });
           reject();
         });
+      });
+    },
+    reset: (form: any) => {
+      setForm({
+        ...form || {}
       });
     },
     getFieldValue: (name: string) => {

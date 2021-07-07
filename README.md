@@ -62,8 +62,9 @@ npm install form-taro3-react
 
 | 方法           | 类型                                 | 说明               |
 |----------------|--------------------------------------|--------------------|
+| validate       | () => Promise<void>                  | 跟进表单项设置的 async-validator rules 校验表单 |
+| reset       | (form?:Record<string, any>) => void | 重置表单，可传入参数值重置 |
 | setFieldsValue | (value: Record<string, any>) => void | 设置表单值         |
-| validate       | () => Promise<any>                   | 校验表单           |
 | getFieldValue  | (name: string) => any                | 获取单个表单项的值 |
 | getFieldsValue | () => Record<string, any>            | 获取整个表单的值   |
 
