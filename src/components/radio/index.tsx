@@ -6,15 +6,19 @@ import {FormFieldProps} from '../../interface';
 import FormControl from '../control';
 import {isControlRequired} from '../../util';
 
-// Radio 参数定义
+/**
+ * 单选框参数
+ */
 export interface FormRadioGroupProps extends FormFieldProps<RadioGroupProps> {
-  // 选中值
+  /** 选中值 */
   value?: number | string;
-  // 选项列表
+  /** 选项列表 */
   options: { label: string; option: RadioProps }[]
 }
 
-// 表单组件：单选框
+/**
+ * 单选框组件
+ */
 export class FormRadioGroup extends Component<FormRadioGroupProps, { value: any }> {
   static defaultProps = {
     type: 'FormControl',

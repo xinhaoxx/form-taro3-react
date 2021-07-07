@@ -5,27 +5,26 @@ import {FormFieldProps} from '../../interface';
 import FormControl from '../control';
 import {isControlRequired} from '../../util';
 
-// 文本输入框 参数
+/**
+ * 文本框参数
+ */
 interface FromTextInputProps extends FormFieldProps<InputProps> {
-  // 文本替换事件
+  /** 文本替换事件 */
   replaceEvent?: (value: string) => string;
-  // 前缀
+  /** 前缀 */
   prefix?: ReactNode;
-  // 后缀
+  /** 后缀 */
   suffix?: ReactNode;
-  // 对齐方式
+  /** 对齐方式，默认值：'left' */
   align?: 'left' | 'right';
-  // 是否隐藏清空
+  /** 是否隐藏清空按钮 */
   hideClear?: boolean;
 }
 
-interface State {
-  value: string;
-  focus: boolean;
-}
-
-// 表单组件：文本输入框
-export class FormTextInput extends Component<FromTextInputProps, State> {
+/**
+ * 表单组件：文本输入框
+ */
+export class FormTextInput extends Component<FromTextInputProps, { value: string; focus: boolean; }> {
   static defaultProps = {
     type: 'FormControl',
     controlName: 'FormTextInput'

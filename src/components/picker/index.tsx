@@ -10,17 +10,21 @@ import {FormFieldProps} from '../../interface';
 import {isArrayEqual, isControlRequired} from '../../util';
 import FormControl from '../control';
 
-// Picker 参数定义
+/**
+ * 滚动选择器参数定义
+ */
 export interface FormPickerProps extends FormFieldProps<PickerMultiSelectorProps | PickerTimeProps | PickerDateProps | PickerRegionProps | PickerSelectorProps> {
-  // 占位符
+  /** 占位符 */
   placeholder?: string;
-  // 多列选择器的分隔符
+  /** 多列选择器的分隔符 */
   separator?: string
-  // Picker 变化事件
+  /** Picker 变化事件 */
   onPickerChange?: (e) => void;
 }
 
-// 表单组件：Picker
+/**
+ * 滚动选择器组件
+ */
 export class FormPicker extends Component<FormPickerProps, { value: number | number[] | string | string[] }> {
   static defaultProps = {
     type: 'FormControl',

@@ -5,7 +5,9 @@ import {FormFieldProps} from '../../interface';
 import FormControl from '../control';
 import {isControlRequired} from '../../util';
 
-// 表单组件：多行文本输入框
+/**
+ * 多行文本输入框组件
+ */
 export class FormTextArea extends Component<FormFieldProps<TextareaProps>, { value: string }> {
   static defaultProps = {
     type: 'FormControl',

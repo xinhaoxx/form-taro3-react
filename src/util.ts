@@ -65,7 +65,7 @@ export const Diff = (obj1, obj2) => {
 
 /**
  * 判断表单控件是否必填
- * @param rules
+ * @param rules - 当前表单项校验规则
  */
 export const isControlRequired = (rules: RuleItem | RuleItem[] | undefined) => {
   if (!rules) return false;

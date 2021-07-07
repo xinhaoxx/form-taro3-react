@@ -14,30 +14,60 @@ import Taro from '@tarojs/taro';
 import Schema, {Rules} from 'async-validator';
 import {Diff, usePrevious} from '../../util';
 
-// 自定义表单 参数定义
+/**
+ * 自定义表单 参数定义
+ */
 export interface CustomizeFormProps {
-  // 默认值
+  /** 默认值 */
   defaultValue?: Record<string, any>;
-  // 表单控件
+  /** 表单控件 */
   children?: ReactNode[] | ReactNode;
-  // 表单值变更
+  /** 表单值变更 */
   onValueChange?: (diff) => void;
-  // 标签配置
+  /** 标签配置 */
   labelStyle?: CSSProperties;
 }
 
-// 自定义表单 Ref 暴露方法
+/**
+ * 自定义表单 Ref 暴露方法
+ */
 export interface CustomizeFormExpose {
+  /**
+   * 校验表单
+   * @example
+   * this.formRef.current?.validate().then(()=>{
+   *   // 校验通过
+   * }).catch((err)=>{
+   *   // 校验不通过
+   * });
+   */
+  validate: () => Promise<void>;
+  /**
+   * 设置表单值
+   * @param value - 值
+   * @example
+   * this.formRef.current?.setFieldsValue({
+   *   name: '张三',
+   *   gender: 1,
+   * });
+   */
   setFieldsValue: (value: Record<string, any>) => void;
-  // 表单验证
-  validate: () => Promise<any>;
-  // 获取单个表单项的值
+  /**
+   * 获取单个表单项的值
+   * @param name - 表单项名称
+   * @return - 该表单项的值
+   */
   getFieldValue: (name: string) => any;
-  // 获取表单值
+  /**
+   * 获取表单值
+   * @return - 当前表单的值
+   */
   getFieldsValue: () => Record<string, any>;
 }
 
-// 自定义表单
+/**
+ * 自定义表单组件
+ */
 export const CustomizeForm = forwardRef<CustomizeFormExpose, CustomizeFormProps>((props, ref) => {
   const [form, setForm] = useState<Record<string, any>>(props?.defaultValue || {});
   const prevForm = usePrevious(form);
@@ -139,7 +169,6 @@ export const CustomizeForm = forwardRef<CustomizeFormExpose, CustomizeFormProps>
 
   // 暴露表单方法
   useImperativeHandle(ref, (): CustomizeFormExpose => ({
-    // 校验表单
     validate: () => {
       return new Promise<void>((resolve, reject) => {
         validator.validate(form).then(() => {
@@ -153,13 +182,10 @@ export const CustomizeForm = forwardRef<CustomizeFormExpose, CustomizeFormProps>
         });
       });
     },
-    // 获取单个表单项的值
     getFieldValue: (name: string) => {
       return form[name];
     },
-    // 获取表单数据
     getFieldsValue: () => form,
-    // 设置表单项值
     setFieldsValue: (value) => {
       setForm({
         ...form,
