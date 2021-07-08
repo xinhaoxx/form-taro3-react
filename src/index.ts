@@ -4,5 +4,6 @@ export * from './components/textarea';
 export * from './components/radio';
 export * from './components/checkbox';
 export * from './components/picker';
+export * from './components/switch';
 export * from './components/dependency';
 export * from './interface';
