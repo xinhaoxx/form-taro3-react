@@ -1,0 +1,23 @@
+.form-checkbox-group {
+  width: 100%;
+
+  .form-checkbox-group-control {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    padding: 20px 0;
+    min-height: 96px;
+
+    label {
+      margin-right: 30px;
+    }
+
+    checkbox {
+      display: flex;
+      align-items: center;
+      color: #333;
+    }
+  }
+}
+
+
