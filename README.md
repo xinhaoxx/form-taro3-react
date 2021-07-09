@@ -7,7 +7,7 @@
 ## 特性
 
 - 支持 Taro 3.x React
-- 表单控件支持传入 async-validator 校验规则
+- 表单控件支持传入 [async-validator](https://github.com/yiminghe/async-validator) 校验规则
 - 支持表单联动
 
 ---
@@ -39,8 +39,7 @@ npm install form-taro3-react
 ### 引入表单样式
 
 ````scss
-#
-index.scss
+/** src/app.scss */
 
 // 完整引入
 @import '~form-taro3-react/dist/styles/index';
@@ -49,16 +48,30 @@ index.scss
 @import '~form-taro3-react/dist/styles/input';
 ````
 
-### 表单 - CustomizeForm
+### CustomizeForm
+表单组件 
 
-> `CustomizeForm` 的方法需要通过 `Ref` 调用，所以请在当前组件中创建 ref 对象，具体参考下方示例代码
+> `CustomizeForm` 的方法需要通过 `Ref` 调用，所以请在当前组件中创建 `Ref` 对象，具体参考下方[示例代码](示例代码)
+
+```` typescript
+import React, {Component, createRef} from 'react';
+import { CustomizeFormExpose } from 'form-taro3-react';
+
+export default class Index extends Component {
+  // 表单 Ref
+  formRef = createRef<CustomizeFormExpose>();
+  
+  render() {
+  ...  
+}
+````
 
 **通用参数**
 
 | 参数          | 类型                                 | 必填 | 说明                                 |
 |---------------|--------------------------------------|:----:|--------------------------------------|
 | `ref`           | `React.RefObject<CustomizeFormExpose>` |  是  | 表单对象，用于获取表单对象并控制表单 |
-| `defaultValue`  | `Record<string, any>`                  |  否  | 默认值                               |
+| `defaultValue`  | `Record<string, any>`                  |  否  | 默认值                              |
 | `labelStyle`    | `CSSProperties`                        |  否  | 表单项标签样式                       |
 | `onValueChange` | `(diff:any) => void`                   |  否  | 表单值变更事件                       |
 | `children`      | `ReactNode[]` `ReactNode`         |  是  | 表单内容元素                         |
@@ -67,24 +80,26 @@ index.scss
 
 | 方法           | 类型                                 | 说明               |
 |----------------|--------------------------------------|--------------------|
-| `validate`       | `() => Promise<void>`                  | 跟进表单项设置的 async-validator rules 校验表单 |
-| `reset`       | `(form?:Record<string, any>) => void` | 重置表单，可传入参数值重置 |
-| `setFieldsValue` | `(value: Record<string, any>) => void` | 设置表单值         |
+| `validate`       | `() => Promise<void>`                  | 校验整个表单，根据设置的 [async-validator](https://github.com/yiminghe/async-validator) `rules`  |
+| `validateField`       | `(name: string) => Promise<void>`  | 校验单个表单项，根据表单项设置的 [async-validator](https://github.com/yiminghe/async-validator) `rules`  |
+| `reset`       | `(form?:Record<string, any>) => void` | 重置整个表单，可传入参数值重置 |
+| `setFieldsValue` | `(value: Record<string, any>) => void` | 设置整个表单的值         |
 | `getFieldValue`  | `(name: string) => any`                | 获取单个表单项的值 |
-| `getFieldsValue` | `() => Record<string, any>`            | 获取整个表单的值   |
+| `getFieldsValue` | `() => Record<string, any>`            | 获取整个表单的值   | 
 
 **表单项通用参数**
 
 | 参数             | 类型                   | 必填 | 说明                                                         |
 |------------------|------------------------|------|--------------------------------------------------------------|
 | `label`            | `string`                 | 否   | 表单左侧/顶部标签                                            |
-| `rules`            | `RuleItem` `RuleItem[]` | 否   | async-validator 校验规则，在触发表单 `validate()` 方法时校验 |
-| `hideRequiredMark` | `boolean`                | 否   | 隐藏必填标识                                                 |
-| `labelStyle`       | `CSSProperties`          | 否   | 当前表单项的标签样式                                         |
+| `rules`            | `RuleItem` `RuleItem[]` | 否   | 传入 [async-validator](https://github.com/yiminghe/async-validator) 校验规则，在触发 `validate()` 或 `validateField()` 时校验 |
+| `hideRequiredMark` | `boolean`                | 否   | 隐藏<span style='color: red'>*</span>必填标识，默认会判断 `rules` 中的 `required` 生成                                                |
+| `labelStyle`       | `CSSProperties`          | 否   | 当前表单项的标签样式，优先级最大                                         |
 
 ----
 
-### 单行文本 - FormTextInput
+### FormTextInput
+单行文本
 
 **通用参数**
 
@@ -93,12 +108,13 @@ index.scss
 | `fieldProps` | `InputProps` | 是 | Taro Input 的通用参数，其中必须声明表单项的 `name`，否则无法获取到表单值 |
 | `prefix` | `ReactNode` | 否 | 前缀 |
 | `suffix` | `ReactNode` | 否 | 后缀 |
-| `align` | `'left'` `'right'` |  否  | 文本框内容对齐方式，默认值：'left' |
+| `align` | `'left'` `'right'` |  否  | 文本框内容对齐方式：`'left'`-左对齐、`'right'`-右对齐，默认值：`'left'` |
 | `hideClear` | `boolean` |  否  | 是否隐藏清空按钮 |
 
 ----
 
-### 多行文本 - FormTextArea
+### FormTextArea
+多行文本框
 
 **通用参数**
 
@@ -108,7 +124,8 @@ index.scss
 
 ----
 
-### 单选框 - FormRadioGroup
+### FormRadioGroup
+单选框
 
 **通用参数**
 
@@ -118,7 +135,8 @@ index.scss
 
 ----
 
-### 多选框 - FormCheckboxGroup
+### FormCheckboxGroup
+多选框
 
 **通用参数**
 
@@ -128,7 +146,8 @@ index.scss
 
 ----
 
-### 开关 - FormSwitch
+### FormSwitch
+开关
 
 **通用参数**
 
@@ -138,7 +157,8 @@ index.scss
 
 ----
 
-### 滚动选择器 - FormPicker
+### FormPicker
+滚动选择器
 
 **通用参数**
 
@@ -151,7 +171,8 @@ index.scss
 
 ----
 
-### 联动控件 - FormDependency
+### FormDependency
+联动控件
 
 > 此组件主要参考了 ProFormComponent 的 [ProFormDependency](https://procomponents.ant.design/components/group#proformdependency) ，但当前实现的版本仅支持返回整个 form 的值
 
@@ -165,7 +186,7 @@ index.scss
 
 ## 示例代码
 
-````
+```` typescript
 import React, {Component, createRef} from 'react';
 import {View, Text, Button} from '@tarojs/components';
 import {
@@ -186,8 +207,24 @@ export default class Index extends Component {
    */
   validate() {
     this.formRef.current?.validate().then(() => {
+      // 校验通过
       // 获取表单值
       console.log(this.formRef.current?.getFieldsValue());
+    }).catch((error)=>{
+      // 校验不通过
+    });
+  }
+  
+  /**
+   * 校验单个表单
+   */
+  validate() {
+    this.formRef.current?.validateField('title').then(() => {
+      // 校验通过
+      // 获取表单值
+      console.log(this.formRef.current?.getFieldValue('title'));
+    }).catch((error)=>{
+      // 校验不通过
     });
   }
 
@@ -240,21 +277,21 @@ export default class Index extends Component {
             }}
           />
           <FormSwitch
-              label='开关'
-              fieldProps={{name: 'switch'}}
-              rules={{required: true, message: '请选择开关'}}
-            />
-           <FormCheckboxGroup
-              label='多选框'
-              fieldProps={{
-                name: 'checkbox'
-              }}
-              options={[
-                {label: 'Apex', value: '1'},
-                {label: 'PUBG', value: '2'},
-                {label: 'CSOL', value: '3'},
-              ]}
-            />
+            label='开关'
+            fieldProps={{name: 'switch'}}
+            rules={{required: true, message: '请选择开关'}}
+          />
+          <FormCheckboxGroup
+            label='多选框'
+            fieldProps={{
+              name: 'checkbox'
+            }}
+            options={[
+              {label: 'Apex', value: '1'},
+              {label: 'PUBG', value: '2'},
+              {label: 'CSOL', value: '3'},
+            ]}
+          />
           <Button onClick={this.validate.bind(this)}>提交</Button>
         </CustomizeForm>
       </View>
