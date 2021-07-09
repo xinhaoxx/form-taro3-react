@@ -43,6 +43,17 @@ export interface CustomizeFormExpose {
    */
   validate: () => Promise<void>;
   /**
+   * 校验单个表单项
+   * @param name - 表单项的name
+   * @example
+   * this.formRef.current?.validateField('title').then(()=>{
+   *   // 校验通过
+   * }).catch((err)=>{
+   *   // 校验不通过
+   * });
+   */
+  validateField: (name: string) => Promise<any>;
+  /**
    * 重置表单
    * @param form - 新表单值
    */
@@ -177,6 +188,20 @@ export const CustomizeForm = forwardRef<CustomizeFormExpose, CustomizeFormProps>
     validate: () => {
       return new Promise<void>((resolve, reject) => {
         validator.validate(form).then(() => {
+          resolve();
+        }).catch(({errors}) => {
+          Taro.showToast({
+            title: errors[0]?.message,
+            icon: 'none'
+          });
+          reject();
+        });
+      });
+    },
+    validateField: (name: string) => {
+      return new Promise((resolve, reject) => {
+        const fieldValidator = new Schema({[name]: descriptor[name]});
+        fieldValidator.validate(form).then(() => {
           resolve();
         }).catch(({errors}) => {
           Taro.showToast({
