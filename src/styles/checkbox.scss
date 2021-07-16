@@ -5,17 +5,32 @@
     display: flex;
     align-items: center;
     flex-wrap: wrap;
-    padding: 20px 0;
+    padding: 20px 0 4px;
     min-height: 96px;
+    box-sizing: border-box;
 
     label {
-      margin-right: 30px;
-    }
-
-    checkbox {
       display: flex;
-      align-items: center;
-      color: #333;
+      margin-bottom: 16px;
+      margin-right: 30px;
+
+      checkbox {
+        display: flex;
+        align-items: center;
+        color: #333;
+        flex-shrink: 0;
+        width: 100%;
+
+        .wx-checkbox-input {
+          flex-shrink: 0;
+        }
+
+        Text {
+          word-wrap: break-word;
+          flex: 1;
+          min-width: 0;
+        }
+      }
     }
   }
 }

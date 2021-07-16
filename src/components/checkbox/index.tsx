@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Checkbox, CheckboxGroup, Label, View} from '@tarojs/components';
+import {Checkbox, CheckboxGroup, Label, View, Text} from '@tarojs/components';
 import {CheckboxGroupProps} from '@tarojs/components/types/CheckboxGroup';
 import {CheckboxProps} from '@tarojs/components/types/Checkbox';
 import {FormFieldProps} from '../../interface';
@@ -70,7 +70,7 @@ export class FormCheckboxGroup extends Component<FormCheckboxGroupProps, { value
                   const checked = this.state.value?.length ? this.state.value?.findIndex(value => item.value === value) > -1 : false;
                   return (
                     <Label for={key} key={key}>
-                      <Checkbox value={item.value} checked={checked}>{item.label}</Checkbox>
+                      <Checkbox value={item.value} checked={checked}><Text>{item.label}</Text></Checkbox>
                     </Label>
                   );
                 })
