@@ -1,7 +1,7 @@
 import {RadioGroupProps} from '@tarojs/components/types/RadioGroup';
 import {RadioProps} from '@tarojs/components/types/Radio';
 import React, {Component} from 'react';
-import {Radio, RadioGroup, View} from '@tarojs/components';
+import {Label, Radio, RadioGroup, View, Text} from '@tarojs/components';
 import {FormFieldProps} from '../../interface';
 import FormControl from '../control';
 import {isControlRequired} from '../../util';
@@ -13,7 +13,9 @@ export interface FormRadioGroupProps extends FormFieldProps<RadioGroupProps> {
   /** 选中值 */
   value?: number | string;
   /** 选项列表 */
-  options: { label: string; option: RadioProps }[]
+  options: { label: string; option: RadioProps }[];
+  /** 排列方式：'vertical'-垂直排列、'horizontal'-水平排列，默认：水平 */
+  layout?: 'vertical' | 'horizontal';
 }
 
 /**
@@ -62,17 +64,20 @@ export class FormRadioGroup extends Component<FormRadioGroupProps, { value: any 
           onChange={(e) => this.update(e.detail.value)}
           {...this.props.fieldProps}
         >
-          <View className='form-radio-group-control'>
+          <View className={`form-radio-group-control ${this.props?.layout || 'horizontal'}`}>
             {
-              this.props.options && this.props.options.map((item) => {
+              this.props.options && this.props.options.map((item, index) => {
+                const key = index + '';
                 return (
-                  <Radio
-                    {...item.option}
-                    key={item.option.value}
-                    checked={item.option?.value === this.state?.value}
-                  >
-                    {item.label}
-                  </Radio>
+                  <Label for={key} key={key}>
+                    <Radio
+                      {...item.option}
+                      key={item.option.value}
+                      checked={item.option?.value === this.state?.value}
+                    >
+                      <Text>{item.label}</Text>
+                    </Radio>
+                  </Label>
                 );
               })
             }

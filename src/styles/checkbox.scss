@@ -1,7 +1,7 @@
-.form-checkbox-group {
+.form-checkbox-group, .form-radio-group {
   width: 100%;
 
-  .form-checkbox-group-control {
+  .form-checkbox-group-control, .form-radio-group-control {
     display: flex;
     align-items: center;
     flex-wrap: wrap;
@@ -14,14 +14,14 @@
       margin-bottom: 16px;
       margin-right: 30px;
 
-      checkbox {
+      checkbox, radio {
         display: flex;
         align-items: center;
         color: #333;
         flex-shrink: 0;
         width: 100%;
 
-        .wx-checkbox-input {
+        .wx-checkbox-input, .wx-radio-input {
           flex-shrink: 0;
         }
 
@@ -32,7 +32,15 @@
         }
       }
     }
+
+    &.vertical {
+      flex-direction: column;
+      align-items: flex-start;
+
+      label {
+        margin-right: 0;
+        width: 100%;
+      }
+    }
   }
 }
-
-

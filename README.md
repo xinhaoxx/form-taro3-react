@@ -132,6 +132,7 @@ export default class Index extends Component {
 | 参数 | 类型 | 必填 | 说明 |
 |---------------|--------------------------------------|:----:|--------------------------------------|
 | `fieldProps` | `FormRadioGroupProps` | 是 | Taro RadioGroup 的通用参数，其中必须声明表单项的 `name`，否则无法获取到表单值 |
+| `layout` | `'vertical'` `'horizontal'`  | 否 | 排列方式，`'vertical'`-垂直排列、`'horizontal'`-水平排列（默认） |
 
 ----
 
@@ -143,6 +144,7 @@ export default class Index extends Component {
 | 参数 | 类型 | 必填 | 说明 |
 |---------------|--------------------------------------|:----:|--------------------------------------|
 | `fieldProps` | `FormCheckboxGroupProps` | 是 | Taro CheckboxGroup 的通用参数，其中必须声明表单项的 `name`，否则无法获取到表单值 |
+| `layout` | `'vertical'` `'horizontal'`  | 否 | 排列方式，`'vertical'`-垂直排列、`'horizontal'`-水平排列（默认） |
 
 ----
 

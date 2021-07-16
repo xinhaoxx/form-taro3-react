@@ -6,7 +6,6 @@ import {FormFieldProps} from '../../interface';
 import FormControl from '../control';
 import {isControlRequired} from '../../util';
 
-
 /**
  * 单选框参数
  */
@@ -14,7 +13,9 @@ export interface FormCheckboxGroupProps extends FormFieldProps<CheckboxGroupProp
   /** 选中值 */
   value?: (number | string)[];
   /** 选项列表 */
-  options: (CheckboxProps & { label: string })[]
+  options: (CheckboxProps & { label: string })[];
+  /** 排列方式：'vertical'-垂直排列、'horizontal'-水平排列，默认：水平 */
+  layout?: 'vertical' | 'horizontal';
 }
 
 /**
@@ -63,7 +64,7 @@ export class FormCheckboxGroup extends Component<FormCheckboxGroupProps, { value
             {...this.props.fieldProps}
             onChange={(e) => this.update(e.detail.value)}
           >
-            <View className='form-checkbox-group-control'>
+            <View className={`form-checkbox-group-control ${this.props?.layout || 'horizontal'}`}>
               {
                 this.props.options?.map((item, index) => {
                   const key = index + '';
